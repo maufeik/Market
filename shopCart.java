@@ -32,9 +32,9 @@ public class shopCart {
         double total=0.0;
         for (int i = 0; i < contProduct; i++) {
             total+=(numProd[i]*price[i]);
-        }
+        }        
         System.out.println(String.format("%.2f", total));
-        
+        contProduct=0;
     }
     public void showCart(){
         for (int i = 0; i < contProduct; i++) {

@@ -1,13 +1,16 @@
 package SUper;
 
+import java.util.Scanner;
+
 public class Stock {
 
     private String[] products;
     private int[] numStock;
     private double[] prices;
+    private int maxProduct;
 
     public void initStock() {
-        int maxProduct = 5;
+        maxProduct = 5;
         products = new String[maxProduct];
         numStock = new int[maxProduct];
         prices = new double[maxProduct];
@@ -28,6 +31,9 @@ public class Stock {
         prices[3] = 1000.01;
         prices[4] = 23.45;
     }
+    public int getMaxProducts(){
+        return maxProduct;
+    }
 
     public void showStock() {
         for (int i = 0; i < products.length; i++) {
@@ -44,7 +50,11 @@ public class Stock {
         else return -1.0;
     }
     
-    private void showElementOfStock(int i, String name, int num, double price) {
+    public int getStock(int idx){        
+        return numStock[idx];
+    }
+    
+    public void showElementOfStock(int i, String name, int num, double price) {
         StringBuilder sb = new StringBuilder();
         sb.append(i).append("--")
                 .append(name).append("--")
@@ -63,5 +73,19 @@ public class Stock {
         }
         return res;
     }
-    
+    public void fillStock(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Si quiere rellenar solo un producto escriba 0 si quiere rellenar todo escriba 1:");
+        int option = teclado.nextInt();
+        if(option==0){
+            showStock();
+            System.out.println("Ingrese el numero del producto a rellenar: ");
+            int opcion = teclado.nextInt();
+            numStock[opcion]=10;
+        }else{
+            for (int i = 0; i < products.length; i++) {
+                numStock[i]=10;
+            }
+        }
+    }
 }
